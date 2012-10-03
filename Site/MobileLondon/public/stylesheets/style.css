@@ -1,0 +1,22 @@
+div.ajaxLoader, span.ajaxLoader {
+	margin: auto;
+	padding: auto;
+	background-image:url('/images/ajax-loader.gif');
+	height: 16px;
+	width: 16px;
+}
+li a span.li-indent { 
+	padding: 0 0 0 15px;
+}
+li span.li-indent { 
+	padding: 0 0 0 12px;
+}
+.ui-li-has-thumb .ui-btn-inner a.ui-link-inherit,.ui-li-static.ui-li-has-thumb{
+	padding-left: 40px; 
+}
+.ui-bar,.ui-body{
+	padding:.4em 0px .4em 0px;
+}
+.ui-bar .ui-controlgroup {
+	margin: 0 .4em;
+}

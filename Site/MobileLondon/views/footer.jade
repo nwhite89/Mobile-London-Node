@@ -1,0 +1,6 @@
+footer#footer(data-role='footer', class='ui-bar', data-position='fixed')
+	div(data-role='controlgroup', data-type='horizontal')
+		a#Favourites(href='/favs', data-icon='star', data-transition='slidedown', data-rel='dialog')	Favourites
+		- if(title == 'Bus Stop Map') {
+		a#BusFilter(href='#options', data-icon='gear', data-transition='slidedown', data-rel='dialog')	Filter
+		- }

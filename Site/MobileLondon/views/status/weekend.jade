@@ -1,0 +1,11 @@
+.page(data-role='page')(data-add-back-btn='true')
+	include ../header
+	.content(data-role='content')#status
+		- each item, i in LineStatus
+			if LineStatus[i][2] == 'Good service'
+				a(data-role='button')(data-corners='false')(data-icon='check')(data-iconpos='right')(data-theme="d")= LineStatus[i][0]
+			else if LineStatus[i][2] == 'Severe delays' || LineStatus[i][2] == 'Planned closure'
+				a(href=LineStatus[i][1])(data-role='button')(data-corners='false')(data-icon='delete')(data-theme="e")= LineStatus[i][0]
+			else
+				a(href=LineStatus[i][1])(data-role='button')(data-corners='false')(data-icon='alert')(data-theme="f")= LineStatus[i][0]
+	include ../footer

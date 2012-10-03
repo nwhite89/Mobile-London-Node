@@ -1,0 +1,10 @@
+table(width='100%')
+	tr
+		th Number
+		th Destination
+		th Wait
+	- each item, i in countdown
+		tr
+			td= countdown[i].num
+			td= countdown[i].dest
+			td= countdown[i].wait

@@ -1,0 +1,37 @@
+script
+	$.mobile.page.prototype.options.addBackBtn='true';
+.page(data-role='page')
+	#header(data-role='header')
+		h1	Header
+	.content(data-role='content')#one
+		h2	One
+		p	This is a quick test of the new page 
+			a(href='#popup')	popup
+		p= text
+			a(href='#two')	two
+	.footer(data-role='footer')
+		h4	Page Footer
+.page(data-role='page')#two
+	#header(data-role='header')
+		h1	Header 2
+	.content(data-role='content')#two
+		h2	Page Two
+		.headerCollapse(data-role='collapsible')(data-content-theme='c')
+			h3	Header Click
+			p	This is a quick test for the second page 
+				a(href='#one')	link
+				.fieldContainer(data-role='fieldcontain')
+					label(for='slide')	Input Slider
+					input(type='range')(name='slider')(id='slider')(value='25')(min='0')(max='100')
+	.footer(data-role='footer')
+		h4	Page Footer
+.page(data-role='page')#popup
+	#header(data-role='header')
+		h1	Header 2
+	.content(data-role='content')#two
+		h2	Two
+		p	This is a popup 
+			a(href='#one')	link
+			#ajaxTest
+	.footer(data-role='footer')
+		h4	Page Footer

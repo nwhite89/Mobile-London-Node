@@ -1,0 +1,49 @@
+script(type='text/javascript', src='http://maps.googleapis.com/maps/api/js?key=AIzaSyAnK9g8TL-Dz9z-ti2a-k0Y8-fwjYz31-k&sensor=true')
+script(type='text/javascript', src='/scripts/jquery.ui.map.full.min.js')
+script
+	var LatLng = '!{LatLng}';
+	var markers = !{JSON.stringify(markers)};
+script(type='text/javascript', src='/scripts/busMap.js')
+
+div#map(data-role='page', data-theme='c')
+	#header(data-role='header')
+		a(href='/bus', data-icon='back', data-ajax='false') Back
+		h1=	title
+		a(href='/', data-icon='home', data-iconpos='notext', data-ajax='false')
+	.content(data-role='content')#main
+		div.ui-corner-all.ui-bar-c.ui-shadow(style='padding: 5px;')
+			#map_canvas(style='min-height:290px')
+	include ../footer
+
+div#info(data-role='page')
+	header(data-role='header')
+		h1#stop	Bus Stop
+	div(data-role='content')
+		div#addFavs
+			a#addFavs(data-role='button', data-icon='star', data-corners='false', rel='') Add to favourites
+		div#fav
+			a#fav(href='/favs/buses', data-role='button', data-icon='star', data-corners='false', rel='', data-theme='b') Favourite
+		p#distance	Distance: 
+		p#routes	Routes:
+		div#countdown
+			div.ajaxLoader
+	
+div#options(data-role='page')
+	header(data-role='header')
+		h1	Options
+	div(data-role='content')
+		div(data-role='fieldcontain')
+			fieldset(class='ui-grid-a')
+				div(class='ui-block-a')
+					a.showAll(data-role='button') Show All
+				div(class='ui-block-b')
+					a.filterRoutes(data-role='button') Submit
+			fieldset#routes(data-role='controlgroup')
+				- each item, i in routes
+					input(id=item, type='checkbox', name=item)
+					label(for=item)	Bus Service: #{item}
+			fieldset(class='ui-grid-a')
+				div(class='ui-block-a')
+					a.showAll(data-role='button') Show All
+				div(class='ui-block-b')
+					a.filterRoutes(data-role='button') Submit					

@@ -1,0 +1,8 @@
+.page(data-role='page')
+	include ../header
+	.content(data-role='content')#main
+		div.ui-li.ui-li-divider.ui-btn.ui-bar-a.ui-corner-top.ui-btn-up-undefined= LineStatus[0]
+		div.ui-corner-bottom.ui-bar-c.ui-shadow(style='padding: 5px;')
+			p= LineStatus[1]
+			p(style='font-weight: normal;')= LineStatus[2]
+	include ../footer

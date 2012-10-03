@@ -1,0 +1,9 @@
+.page(data-role='page')(data-theme='c')
+	#header(data-role='header')
+		a(href='/')(data-icon='back')(data-rel='back') Back
+		h1= title
+		a(href='/')(data-icon='home')(data-iconpos='notext')(data-ajax='false')
+	.content(data-role='content')
+		div.ui-li.ui-li-divider.ui-btn.ui-bar-b.ui-corner-top.ui-btn-up-undefined	Error
+		div.ui-corner-bottom.ui-bar-c.ui-shadow(style='padding: 5px;')
+			p=	errorCode

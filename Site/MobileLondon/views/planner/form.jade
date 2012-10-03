@@ -1,0 +1,79 @@
+- if (userF == 'false') {
+	script(type='text/javascript', src='/scripts/geolocation.js')
+	script(type='text/javascript', src='/scripts/plannerForm.js')
+	.page(data-role='page')#plannerForm
+		include ../header
+		.content(data-role='content')#one
+			form#planner(action='/planner/journey', method='post', data-ajax='false')
+				div#from(data-role='fieldcontain')
+					div(data-role='collapsible', data-theme='a', data-content-theme='c', data-collapsed='false')
+						h3	From / To
+						label(for='from') From:
+							span
+						input#from(name='from', type='text')	
+						label(for='fromChoice')		
+						select#fromChoice(name='fromChoice')
+							option(value='stop') Station
+							option(value='locator') Post Code
+							option(value='coord') Current Location
+						br
+						label(for='to') To:
+							span
+						input#to(name='to')(type='text')
+						label(for='toChoice')
+						select#toChoice(name='toChoice')
+							option(value='stop') Station
+							option(value='locator') Post Code
+							option(value='coord') Current Location
+					div(data-role='collapsible', data-theme='a', data-content-theme='c', data-collapsed='collapsed')
+						h3	Time Details
+						fieldset(data-role='controlgroup')
+							input#arrival(type='radio', name='ArriveDepart', value='arr')
+							label(for='arrival')	Arrival
+							input#depart(type='radio', name='ArriveDepart', value='dep', checked='checked')
+							label(for='depart')	Depart	
+						label(for='date')	On:
+						input#date(name='date', data-theme='c', type='date', data-role='datebox', data-options='{"mode": "calbox", "focusMode": true, "calTodayButton": true, "dateFormat": "DD-MM-YYYY", "fieldsOrderOverride": ["d", "m", "y"]}', value=	date)
+						label(for='time')	Time:
+						input#time(name='time', data-theme='c', type='date', data-role='datebox', data-options='{"mode": "timebox", "focusMode": true, "calTodayButton": true}', value=	time)
+					input#geo(type='hidden', value='', name='geo')
+					div(style='text-align: center;')
+						input#submit(type='submit', data-inline='true', value='Submit', name='submit')
+		include ../footer
+- } else {
+	.page(data-role='page')#plannerFav
+		include ../header
+		.content(data-role='content')#one
+			form#planner(action='/planner/journey', method='post', data-ajax='false')
+				div#from(data-role='fieldcontain')
+					label(for='from') From:
+						span
+					input#from.ui-disabled(name='from', type='text', value='#{userF[0].from}')
+					label(for='fromChoice')		
+					div(style='display: none;')
+						select#fromChoice(name='fromChoice')
+							option(value='#{userF[0].fType}')=	userF[0].fType
+					br
+					label(for='to') To:
+						span
+					input#to.ui-disabled(name='to', type='text', value='#{userF[0].to}')
+					div(style='display: none;')
+						label(for='toChoice')
+						select#toChoice(name='toChoice')
+							option(value='#{userF[0].tType}')=	userF[0].tType
+					fieldset(data-role='controlgroup')
+							input#arrival(type='radio', name='ArriveDepart', value='arr')
+							label(for='arrival')	Arrival
+							input#depart(type='radio', name='ArriveDepart', value='dep', checked='checked')
+							label(for='depart')	Depart	
+					label(for='date')	On:
+					input#date(name='date', type='date', data-role='datebox', data-options='{"mode": "calbox", "focusMode": true, "calTodayButton": true, "dateFormat": "DD-MM-YYYY", "fieldsOrderOverride": ["d", "m", "y"]}', value=	date)
+					label(for='time')	Time:
+					input#time(name='time', type='date', data-role='datebox', data-options='{"mode": "timebox", "focusMode": true, "calTodayButton": true}', value=	time)
+					
+					br
+					br
+					input#fav(type='hidden', value='true', name='fav')
+					input#submit(type='submit', value='Submit', name='submit')
+		include ../footer
+- }

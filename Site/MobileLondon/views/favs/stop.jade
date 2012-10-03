@@ -1,0 +1,21 @@
+div#info(data-role='page')
+	script
+		var sid = !{stopID};
+	script(type='text/javascript', src='/scripts/favStop.js')
+	script
+		$(document).delegate('div#info', 'pageshow', function () {
+			stopCountdown(sid);
+			staticMap(sid);
+		});
+	include ../header
+		
+	div(data-role='content')
+		div#map(data-role='collapsible', data-content-theme='c')
+			h3	Map
+			p(style='text-align: center;')
+				img#map(alt='Location of #{title}', height='200', width='200', src='', align='centre')
+		div.ui-li.ui-li-divider.ui-btn.ui-bar-a.ui-corner-top.ui-btn-up-undefined	Countdown
+		div.ui-corner-bottom.ui-bar-c.ui-shadow(style='padding: 5px;')
+			div#countdown
+				div.ajaxLoader
+	include ../footer

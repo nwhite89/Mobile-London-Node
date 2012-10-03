@@ -1,0 +1,19 @@
+.page(data-role='page')#journeyMain
+	include ../header
+	.content(data-role='content')#main
+		div#journeySummary(data-role='collapsible', data-theme='a', data-content-theme='c', style='clear: both;')
+			h3	Journey Summary
+			p	
+				strong=	depArr  
+				span=	dateTime
+				br
+				strong	From: 
+				span=	from
+				br
+				strong	To: 
+				span=	to
+		ol(data-role='listview', data-inset='true', data-divider-theme='a')
+			li(data-role='list-divider')	Routes
+			li	Sorry but no Journey information was returned for your search 
+			li	When entering by station please ensure that you have entered the full name of the station for example: Kings Cross Station
+			li	Please be aware that only Postcodes within the Greater London area as well as when using your current location

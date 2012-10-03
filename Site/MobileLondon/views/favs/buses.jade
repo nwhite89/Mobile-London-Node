@@ -1,0 +1,13 @@
+#busFavs.page(data-role='page', data-theme='c')
+	script(type='text/javascript', src='/scripts/favs.js')
+	header#header(data-role='header')
+		a(data-rel='back', data-icon='back') Back
+		h1=	title
+		a(href='/', data-icon='home', data-iconpos='notext')
+	.content(data-role='content')#main
+		a#edit(href='/favs/buses/edit', data-role='button', data-icon='gear', data-inline='true', style='float: right;', data-theme='b')	Edit
+		div(style='clear: both;')
+		div.ui-li.ui-li-divider.ui-btn.ui-bar-a.ui-corner-top.ui-btn-up-undefined	Favourites
+		div#favContent.ui-corner-bottom.ui-bar-c.ui-shadow(style='padding: 5px;')
+			p
+	include ../footer

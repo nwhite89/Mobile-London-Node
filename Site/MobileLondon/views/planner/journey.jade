@@ -1,0 +1,82 @@
+script(type='text/javascript', src='/scripts/journey.js')
+.page(data-role='page')#journeyMain
+	include ../header
+	.content(data-role='content')#main
+		- if (routeInfo != '')
+			div#favJourney
+				a#favJourney(data-role='button', data-inline='true', style='float: right;', rel='#{favRel}', data-icon='star')	Add to favs
+			div#favourite(style='display: none;')
+				a#favourite(data-role='button', data-inline='true', data-theme='b', style='float: right;', data-icon='star')	Favourite
+		div#journeySummary(data-role='collapsible', data-theme='a', data-content-theme='c', style='clear: both;')
+			h3	Journey Summary
+			p	
+				strong=	depArr  
+				span=	dateTime
+				br
+				strong	From: 
+				span=	from
+				br
+				strong	To: 
+				span=	to
+		ol(data-role='listview', data-inset='true', data-divider-theme='a')
+			li(data-role='list-divider')	Routes
+			- if (routeInfo != '')
+				- each item, i in routeInfo
+					li(data-icon="arrow-r")	
+						a(href='##{item.Page}')	Departure: !{routeDep[i]}
+							br
+							span.li-indent	Arrival: !{routeArr[i]}
+							br
+							span.li-indent	Duration: !{item.Duration}
+							br
+							span.li-indent	Inter-changes:	!{item.Changes}
+							br
+							- each item, x in journeyInfo[i]
+								span
+									img(src='/images/plannerIcons/#{item.Type}.png', alt='#{item.Type}')
+			- else
+				li	Sorry but no Journey information was returned for your search
+	include ../footer
+- each item, i in routeInfo
+	.page(id=	item.Page, data-role='page')
+		include ../header
+		.content(data-role='content')
+			div(data-role='collapsible', data-theme='a', data-content-theme='c', style='clear: both;')
+				h3	Journey Summary
+				p	
+					strong	Departure:
+					#{routeDep[i]}
+					br
+					strong	Arrival:
+					#{routeArr[i]}
+					br
+					strong	From: 
+					#{from}
+					br
+					strong	To: 
+					#{to}
+					br
+					br
+					strong	Esitmated journey time: 
+					#{item.Duration}
+					br
+					strong	Interchanges: 
+					#{item.Changes}
+			ul(data-role='listview', data-inset='true', data-divider-theme='a')
+				li(data-role='list-divider')	Route Details
+				- each item, x in journeyInfo[i]
+					li(style='font-weight: normal;')
+						img(src='/images/plannerIcons/#{item.Type}.png', alt='#{item.Type}')
+						strong	Time: 
+						#{item.Time}
+						br	
+						strong	Depart: 
+						#{item.Depart}
+						br
+						hr
+						- if (item.Type == 'Footpath') {
+							span	Walk to: #{item.Arrival}
+						- } else {
+							span	#{item.Take}
+						- }
+		include ../footer

@@ -1,0 +1,15 @@
+script(type='text/javascript', src='scripts/findme.js')
+script(type='text/javascript', src='scripts/busForm.js')
+div.page(data-role='page', data-theme='c')#form
+	header#header(data-role='header')
+		h1= title
+	.content(data-role='content')#main
+		form#pcForm(action='/bus', method='post', data-ajax='false')
+			label#postCode(for='postCode') Postcode: 		
+			input#postCode(type='text', value='', name='postCode')
+			input(type='submit', value='Postcode', data-inline='true')
+			a#findMe(data-role='button', data-inline='true', data-theme='b')	Current
+		form#geoForm(action='/bus', method='post', data-ajax='false')
+			input#geoLng(type='hidden', value='', name='geoLng')
+			input#geoLat(type='hidden', value='', name='geoLat')
+			span#geoError

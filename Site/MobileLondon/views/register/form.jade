@@ -1,0 +1,12 @@
+script(type='text/javascript', src='scripts/register.js')
+div.page(data-role='page', data-theme='c')#register
+	header#header(data-role='header')
+		a(href='/', data-icon='back', data-rel='back') Back
+		h1=	title
+		a(href='/', data-icon='home', data-iconpos='notext')
+	.content(data-role='content')#main
+		form#register(action='/register', method='post', data-ajax='false')
+			label#email(for='email')	E-Mail
+			input#email(type='text', name='email', value='')
+			br
+			input#submit(type='submit', name='submit', value='Submit', data-inline='true')

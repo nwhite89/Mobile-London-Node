@@ -1,0 +1,12 @@
+script(type='text/javascript', src='scripts/register.js')
+div.page(data-role='page', data-theme='c')#login
+	header#header(data-role='header')
+		h1= title
+	.content(data-role='content')#main
+		form#register(action='/user', method='post', data-ajax='false')
+			label#email(for='email')	E-Mail
+			input#email(type='text', name='email', value='')
+			label#password(for='password')	Password
+			input#password(type='password', name='password', value='')
+			input#submit(type='submit', name='submit', value='Submit', data-inline='true')
+			a#register(href='/register', data-role='button', data-inline='true', data-theme='b')	Register

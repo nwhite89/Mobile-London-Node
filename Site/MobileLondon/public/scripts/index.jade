@@ -1,0 +1,17 @@
+script(type='text/javascript', src='scripts/findme.js')
+script(type='text/javascript', src='scripts/busForm.js')
+
+.page(data-role='page', data-theme='c')
+	header#header(data-role='header')
+		h1=	title
+	.content(data-role='content')#main
+		ul#homePage(data-role='listview', data-inset='true', data-theme='c', data-divider-theme='a')
+			li
+				a(href='/planner', data-corners='false', data-ajax='false')	Journey Planner
+			li
+				a(href='/bus?x=1', data-corners='false', data-transition='slidedown', data-rel='dialog')	Bus Stop Countdown
+			li
+				a(href='/liveStatus', data-corners='false')	Live Tube Status
+			li
+				a(href='/weekendStatus', data-corners='false')	Weekend Tube Status
+	include ./footer
